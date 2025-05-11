@@ -113,21 +113,7 @@ export default function AboutPage() {
               position: "Founder & CEO",
               image: "/placeholder.svg?height=400&width=400",
             },
-            {
-              name: "Priya Sharma",
-              position: "Design Consultant",
-              image: "/placeholder.svg?height=400&width=400",
-            },
-            {
-              name: "Amit Singh",
-              position: "Sales Manager",
-              image: "/placeholder.svg?height=400&width=400",
-            },
-            {
-              name: "Neha Desai",
-              position: "Customer Service",
-              image: "/placeholder.svg?height=400&width=400",
-            },
+          
           ].map((member, index) => (
             <motion.div
               key={index}

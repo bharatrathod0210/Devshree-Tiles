@@ -10,44 +10,13 @@ import { ArrowLeft, ArrowRight, Quote } from "lucide-react"
 const testimonials = [
   {
     id: 1,
-    name: "Rajesh Patel",
-    role: "Homeowner",
+    name: "L.K. Rathod",
+    role: "Founder & CEO",
     content:
       "We renovated our entire house with tiles from Devshree Tiles. The quality is exceptional and the team provided excellent guidance in selecting the perfect tiles for each room.",
     avatar: "/placeholder.svg?height=100&width=100",
   },
-  {
-    id: 2,
-    name: "Priya Sharma",
-    role: "Interior Designer",
-    content:
-      "As an interior designer, I've worked with many tile suppliers, but Devshree Tiles stands out for their extensive collection and quality products. My clients are always satisfied with the results.",
-    avatar: "/placeholder.svg?height=100&width=100",
-  },
-  {
-    id: 3,
-    name: "Amit Singh",
-    role: "Contractor",
-    content:
-      "I've been sourcing tiles from Devshree Tiles for my construction projects for years. Their products are durable, aesthetically pleasing, and reasonably priced. Highly recommended!",
-    avatar: "/placeholder.svg?height=100&width=100",
-  },
-  {
-    id: 4,
-    name: "Neha Desai",
-    role: "Restaurant Owner",
-    content:
-      "We used Devshree Tiles for our restaurant renovation. The kitchen tiles are not only beautiful but also practical and easy to clean. Excellent service and quality products.",
-    avatar: "/placeholder.svg?height=100&width=100",
-  },
-  {
-    id: 5,
-    name: "Vikram Mehta",
-    role: "Architect",
-    content:
-      "Devshree Tiles offers a great selection of premium tiles that meet the high standards required for my architectural projects. Their team is knowledgeable and professional.",
-    avatar: "/placeholder.svg?height=100&width=100",
-  },
+ 
 ]
 
 export default function Testimonials() {

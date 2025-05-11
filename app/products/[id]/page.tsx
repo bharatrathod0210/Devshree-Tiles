@@ -1,32 +1,41 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { motion } from "framer-motion"
-import { Button } from "@/components/ui/button"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { ArrowLeft, Check, Star } from "lucide-react"
-import Image from "next/image"
-import Link from "next/link"
-import { products } from "@/lib/products"
-import ProductCard from "@/components/product-card"
-import { notFound } from "next/navigation"
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { ArrowLeft, Check, Star } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { products } from "@/lib/products";
+import ProductCard from "@/components/product-card";
+import { notFound } from "next/navigation";
 
 export default function ProductPage({ params }: { params: { id: string } }) {
-  const product = products.find((p) => p.id === params.id)
+  const product = products.find((p) => p.id === params.id);
 
   if (!product) {
-    notFound()
+    notFound();
   }
 
-  const [selectedImage, setSelectedImage] = useState(0)
+  const [selectedImage, setSelectedImage] = useState(0);
 
   // Get related products (same category)
-  const relatedProducts = products.filter((p) => p.category === product.category && p.id !== product.id).slice(0, 4)
+  const relatedProducts = products
+    .filter((p) => p.category === product.category && p.id !== product.id)
+    .slice(0, 4);
 
   return (
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
-      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
-        <Link href="/products" className="flex items-center text-primary mb-8 hover:underline">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+      >
+        <Link
+          href="/products"
+          className="flex items-center text-primary mb-8 hover:underline"
+        >
           <ArrowLeft className="mr-2 h-4 w-4" />
           Back to Products
         </Link>
@@ -51,7 +60,9 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                 <div
                   key={index}
                   className={`relative h-24 rounded-md overflow-hidden cursor-pointer border-2 ${
-                    selectedImage === index ? "border-primary" : "border-transparent"
+                    selectedImage === index
+                      ? "border-primary"
+                      : "border-transparent"
                   }`}
                   onClick={() => setSelectedImage(index)}
                 >
@@ -78,37 +89,54 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                 {[...Array(5)].map((_, i) => (
                   <Star
                     key={i}
-                    className={`h-5 w-5 ${i < product.rating ? "text-yellow-500 fill-yellow-500" : "text-gray-300"}`}
+                    className={`h-5 w-5 ${
+                      i < product.rating
+                        ? "text-yellow-500 fill-yellow-500"
+                        : "text-gray-300"
+                    }`}
                   />
                 ))}
               </div>
-              <span className="ml-2 text-gray-600 dark:text-gray-400">({product.reviews} reviews)</span>
+              <span className="ml-2 text-gray-600 dark:text-gray-400">
+                ({product.reviews} reviews)
+              </span>
             </div>
-            <p className="text-2xl font-bold mb-4">₹{product.price.toLocaleString()}</p>
+            <p className="text-2xl font-bold mb-4">
+              ₹{product.price.toLocaleString()}
+            </p>
 
             <div className="mb-6">
               <h3 className="text-lg font-medium mb-2">Description</h3>
-              <p className="text-gray-600 dark:text-gray-300">{product.description}</p>
+              <p className="text-gray-600 dark:text-gray-300">
+                {product.description}
+              </p>
             </div>
 
             <div className="grid grid-cols-2 gap-4 mb-6">
               <div>
                 <h3 className="text-sm font-medium mb-1">Size</h3>
-                <p className="text-gray-600 dark:text-gray-300">{product.size}</p>
+                <p className="text-gray-600 dark:text-gray-300">
+                  {product.size}
+                </p>
               </div>
               <div>
                 <h3 className="text-sm font-medium mb-1">Category</h3>
                 <p className="text-gray-600 dark:text-gray-300">
-                  {product.category.charAt(0).toUpperCase() + product.category.slice(1)}
+                  {product.category.charAt(0).toUpperCase() +
+                    product.category.slice(1)}
                 </p>
               </div>
               <div>
                 <h3 className="text-sm font-medium mb-1">Material</h3>
-                <p className="text-gray-600 dark:text-gray-300">{product.material}</p>
+                <p className="text-gray-600 dark:text-gray-300">
+                  {product.material}
+                </p>
               </div>
               <div>
                 <h3 className="text-sm font-medium mb-1">Finish</h3>
-                <p className="text-gray-600 dark:text-gray-300">{product.finish}</p>
+                <p className="text-gray-600 dark:text-gray-300">
+                  {product.finish}
+                </p>
               </div>
             </div>
 
@@ -143,8 +171,13 @@ export default function ProductPage({ params }: { params: { id: string } }) {
               <TabsTrigger value="installation">Installation</TabsTrigger>
               <TabsTrigger value="reviews">Reviews</TabsTrigger>
             </TabsList>
-            <TabsContent value="specifications" className="p-6 border rounded-md mt-2">
-              <h3 className="text-xl font-semibold mb-4">Technical Specifications</h3>
+            <TabsContent
+              value="specifications"
+              className="p-6 border rounded-md mt-2"
+            >
+              <h3 className="text-xl font-semibold mb-4">
+                Technical Specifications
+              </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <div className="flex justify-between py-2 border-b">
@@ -176,24 +209,44 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                 </div>
               </div>
             </TabsContent>
-            <TabsContent value="installation" className="p-6 border rounded-md mt-2">
-              <h3 className="text-xl font-semibold mb-4">Installation Guidelines</h3>
+            <TabsContent
+              value="installation"
+              className="p-6 border rounded-md mt-2"
+            >
+              <h3 className="text-xl font-semibold mb-4">
+                Installation Guidelines
+              </h3>
               <div className="space-y-4">
                 <p>
-                  For optimal results, we recommend professional installation of our {product.category} tiles. However,
-                  if you're planning a DIY project, here are some general guidelines:
+                  For optimal results, we recommend professional installation of
+                  our {product.category} tiles. However, if you're planning a
+                  DIY project, here are some general guidelines:
                 </p>
                 <ol className="list-decimal pl-5 space-y-2">
-                  <li>Prepare the surface by ensuring it's clean, dry, and level.</li>
-                  <li>Use appropriate adhesive for the specific tile type and installation area.</li>
-                  <li>Start from the center of the room and work outwards for even distribution.</li>
-                  <li>Use spacers to maintain consistent gaps between tiles.</li>
+                  <li>
+                    Prepare the surface by ensuring it's clean, dry, and level.
+                  </li>
+                  <li>
+                    Use appropriate adhesive for the specific tile type and
+                    installation area.
+                  </li>
+                  <li>
+                    Start from the center of the room and work outwards for even
+                    distribution.
+                  </li>
+                  <li>
+                    Use spacers to maintain consistent gaps between tiles.
+                  </li>
                   <li>Allow proper drying time before grouting.</li>
                   <li>Apply grout carefully and clean excess promptly.</li>
-                  <li>Seal the grout lines if necessary for the specific installation area.</li>
+                  <li>
+                    Seal the grout lines if necessary for the specific
+                    installation area.
+                  </li>
                 </ol>
                 <p className="mt-4">
-                  For detailed installation instructions specific to this product, please contact our team.
+                  For detailed installation instructions specific to this
+                  product, please contact our team.
                 </p>
               </div>
             </TabsContent>
@@ -208,7 +261,9 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                           <Star
                             key={j}
                             className={`h-4 w-4 ${
-                              j < 4 + (i % 2) ? "text-yellow-500 fill-yellow-500" : "text-gray-300"
+                              j < 4 + (i % 2)
+                                ? "text-yellow-500 fill-yellow-500"
+                                : "text-gray-300"
                             }`}
                           />
                         ))}
@@ -217,7 +272,15 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                         {["2 months ago", "1 week ago", "3 months ago"][i]}
                       </span>
                     </div>
-                    <h4 className="font-medium">{["Great quality!", "Excellent product", "Beautiful tiles"][i]}</h4>
+                    <h4 className="font-medium">
+                      {
+                        [
+                          "Great quality!",
+                          "Excellent product",
+                          "Beautiful tiles",
+                        ][i]
+                      }
+                    </h4>
                     <p className="text-gray-600 dark:text-gray-300 mt-1">
                       {
                         [
@@ -227,7 +290,6 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                         ][i]
                       }
                     </p>
-                    <p className="text-sm font-medium mt-2">{["- Rajesh P.", "- Priya M.", "- Amit S."][i]}</p>
                   </div>
                 ))}
               </div>
@@ -246,5 +308,5 @@ export default function ProductPage({ params }: { params: { id: string } }) {
         </div>
       </motion.div>
     </div>
-  )
+  );
 }
