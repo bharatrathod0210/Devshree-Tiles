@@ -32,7 +32,7 @@ const IMGS = {
   // Gallery — tile applications without people
   g1: 'https://images.unsplash.com/photo-1560440021-33f9b867899d?w=800&q=80',
   g2: 'https://images.unsplash.com/photo-1484101403633-562f891dc89a?w=800&q=80',
-  g3: 'https://images.unsplash.com/photo-1562184647-c198531c7c97?w=800&q=80',
+  g3: 'https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=1800&q=85',
   g4: 'https://images.unsplash.com/photo-1583845112239-97ef1341b271?w=800&q=80',
   g5: 'https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&q=80',
   g6: 'https://images.unsplash.com/photo-1615971677499-5467cbab01c0?w=800&q=80',
