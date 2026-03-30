@@ -1,0 +1,176 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── CSS Custom Properties ─────────────────────────────────────── */
+:root {
+  --gold: #D4AF37;
+  --gold-light: #F0D060;
+  --gold-dark: #A88A20;
+  --glow: 0 0 30px rgba(212, 175, 55, 0.25);
+  --glow-sm: 0 0 12px rgba(212, 175, 55, 0.18);
+  --bg-primary: #0D0D0D;
+  --bg-secondary: #141414;
+  --bg-card: #1A1A1A;
+  --bg-card-hover: #202020;
+  --border-gold: rgba(212, 175, 55, 0.25);
+  --border-subtle: rgba(255,255,255,0.06);
+}
+
+/* ── Base Reset ─────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-primary);
+  color: #F0EDE6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Typography helpers ─────────────────────────────────────────── */
+.font-serif { font-family: 'Cormorant Garamond', serif; }
+.font-display { font-family: 'Playfair Display', serif; }
+
+/* ── Gold Gradient Text ─────────────────────────────────────────── */
+.text-gold {
+  background: linear-gradient(135deg, var(--gold-dark) 0%, var(--gold) 55%, var(--gold-light) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.bg-gold {
+  background: linear-gradient(135deg, var(--gold-dark) 0%, var(--gold) 55%, var(--gold-light) 100%);
+}
+
+/* ── Glow Effects ────────────────────────────────────────────────── */
+.glow-gold { box-shadow: var(--glow); }
+.glow-gold-sm { box-shadow: var(--glow-sm); }
+
+/* ── Glassmorphism ─────────────────────────────────────────────── */
+.glass {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid var(--border-gold);
+}
+.glass-dark {
+  background: rgba(13, 13, 13, 0.85);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid var(--border-gold);
+}
+.glass-card {
+  background: rgba(26, 26, 26, 0.90);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-subtle);
+  transition: border-color 0.35s ease, box-shadow 0.35s ease;
+}
+.glass-card:hover {
+  border-color: rgba(212, 175, 55, 0.35);
+  box-shadow: 0 8px 40px rgba(212, 175, 55, 0.08);
+}
+
+/* ── Custom Scrollbar ───────────────────────────────────────────── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #0D0D0D; }
+::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--gold-light); }
+
+/* ── Gold Divider ───────────────────────────────────────────────── */
+.gold-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+/* ── Tile Card Hover ────────────────────────────────────────────── */
+.tile-card { transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+.tile-card:hover { transform: translateY(-4px); }
+.tile-card:hover .tile-img { transform: scale(1.08); }
+.tile-img { transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+
+/* ── Lazy Image ─────────────────────────────────────────────────── */
+.img-blur { filter: blur(8px); transition: filter 0.5s ease; }
+.img-loaded { filter: blur(0); }
+
+/* ── Skeleton Loader ────────────────────────────────────────────── */
+@keyframes shimmer {
+  0% { background-position: -600px 0; }
+  100% { background-position: 600px 0; }
+}
+.skeleton {
+  background: linear-gradient(90deg, #1a1a1a 25%, #252525 50%, #1a1a1a 75%);
+  background-size: 1200px 100%;
+  animation: shimmer 1.8s infinite;
+}
+
+/* ── Floating / Pulse ───────────────────────────────────────────── */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+.floating { animation: float 3.5s ease-in-out infinite; }
+
+@keyframes goldPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.5); }
+  50% { box-shadow: 0 0 22px 8px rgba(212, 175, 55, 0.12); }
+}
+.gold-pulse { animation: goldPulse 2.5s ease-in-out infinite; }
+
+/* ── Counter animation ──────────────────────────────────────────── */
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.count-anim { animation: countUp 0.8s ease forwards; }
+
+/* ── Swiper overrides ───────────────────────────────────────────── */
+.swiper-pagination-bullet {
+  background: var(--gold) !important;
+  opacity: 0.4;
+  width: 8px; height: 8px;
+}
+.swiper-pagination-bullet-active {
+  opacity: 1 !important;
+  width: 28px;
+  border-radius: 4px;
+}
+.swiper-button-next,
+.swiper-button-prev { color: var(--gold) !important; }
+
+/* ── Button gold glow ───────────────────────────────────────────── */
+.btn-gold {
+  background: linear-gradient(135deg, var(--gold-dark), var(--gold), var(--gold-light));
+  color: #0D0D0D;
+  font-weight: 700;
+  transition: all 0.3s ease;
+}
+.btn-gold:hover {
+  box-shadow: 0 0 28px rgba(212,175,55,0.5), 0 4px 16px rgba(212,175,55,0.3);
+  transform: translateY(-2px);
+}
+
+/* ── Section noise texture ──────────────────────────────────────── */
+.noise-bg {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+}
+
+/* ── Marquee ────────────────────────────────────────────────────── */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.marquee-track { animation: marquee 22s linear infinite; }
+.marquee-track:hover { animation-play-state: paused; }
