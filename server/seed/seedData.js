@@ -317,10 +317,13 @@ const seedTiles = [
 
 const seedDatabase = async () => {
   try {
-    // Always re-seed to keep images and data up to date
-    await Tile.deleteMany({});
+    const count = await Tile.countDocuments();
+    if (count > 0) {
+      console.log(`ℹ️  DB already has ${count} tiles — skipping seed.`);
+      return;
+    }
     await Tile.insertMany(seedTiles);
-    console.log(`✅ Seeded ${seedTiles.length} tile products into database.`);
+    console.log(`✅ Seeded ${seedTiles.length} tiles.`);
   } catch (error) {
     console.error('❌ Seeding error:', error.message);
   }

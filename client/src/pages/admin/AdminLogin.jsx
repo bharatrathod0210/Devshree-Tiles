@@ -99,11 +99,6 @@ export default function AdminLogin() {
               ) : 'Sign In'}
             </button>
           </form>
-
-          <div className="gold-divider mt-8 mb-5" />
-          <p className="text-center text-gray-500 text-xs">
-            Default: <span className="text-gray-300">admin@devshreetiles.com</span> / <span className="text-gray-300">Admin@123</span>
-          </p>
         </div>
       </motion.div>
     </div>

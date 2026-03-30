@@ -13,6 +13,8 @@ client/dist-ssr/
 .env.*.local
 server/.env
 client/.env
+# Allow production env for client (no secrets, just API URL)
+!client/.env.production
 
 # ===== Uploads =====
 server/uploads/*

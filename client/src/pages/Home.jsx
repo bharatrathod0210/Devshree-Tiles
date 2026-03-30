@@ -22,9 +22,9 @@ const IMGS = {
 
   // Category — strictly category-matched
   bathroom: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=800&q=80',
-  kitchen:  'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=80',
+  kitchen:  'https://images.unsplash.com/photo-1556909172-54557c7e4fb7?w=800&q=80',
   floor:    'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&q=80',
-  wall:     'https://images.unsplash.com/photo-1629079448081-32e5e2e71ea4?w=800&q=80',
+  wall:     'https://images.unsplash.com/photo-1600489000022-c2086d79f9d4?w=800&q=80',
 
   // CTA parallax — marble texture, no people
   cta: 'https://images.unsplash.com/photo-1616137422495-1e9e46e2aa77?w=1600&q=80',
